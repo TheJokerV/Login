@@ -4,8 +4,8 @@ POST http://localhost:3030/api/tasks
 Content-Type: application/json
 
 {
-    "title": "Avenged Sevenfold",
-    "description": "I love band"
+    "title": "Avenged Seasavenfoldsadadas",
+    "description": "I love bandadasdasd",
 }
 
 ### List tasks

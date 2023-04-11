@@ -1,20 +1,13 @@
-import {Entity, Column, PrimaryGeneratedColumn} from "typeorm";
+import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
-@Entity()
+@Entity("Task", { schema: "proyectoGrado" })
 export class Task {
-    @PrimaryGeneratedColumn()
-    id!: number;
+  @PrimaryGeneratedColumn({ type: "int", name: "id" })
+  id!: number;
 
-    @Column({
-        length: 45
-    })
-    title!: string;
+  @Column("varchar", { name: "title", nullable: true, length: 45 })
+  title!: string | null;
 
-    @Column({
-        length: 45
-    })
-    description!: string;
-
-    @Column()
-    isCompleted!: boolean;
+  @Column("varchar", { name: "description", nullable: true, length: 45 })
+  description!: string | null;
 }
