@@ -12,8 +12,8 @@ export class ActividadesController{
         next: NextFunction
         ):Promise<void> {
             try {
-                const tasks = await this.repository.List();
-                res.status(200).json(tasks);
+                const actividades = await this.repository.List();
+                res.status(200).json(actividades);
 
             } catch (error) {
                 next(error);
