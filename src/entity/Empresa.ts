@@ -1,3 +1,5 @@
+import * as bcryptjs from "bcryptjs";
+
 import {
   Column,
   Entity,
@@ -43,4 +45,14 @@ export class Empresa {
   })
   @JoinColumn([{ name: "rol", referencedColumnName: "idRol" }])
   rol2!: Rol;
+
+  hashPassword(): void{
+    const salt = bcryptjs.genSaltSync(10);
+    this.contraseA = bcryptjs.hashSync(this.contraseA, salt);
+  }
+
+  checkPassword(contraseña: string): boolean{
+    return bcryptjs.compareSync(contraseña, this.contraseA);
+  }
+
 }

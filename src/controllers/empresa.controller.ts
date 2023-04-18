@@ -1,10 +1,10 @@
 import {Request, Response, NextFunction} from "express"
-import { DatabaseRepository } from "./declaration"
-import { Task } from "../entity/Task"
+import { DatabaseRepository } from "../declaration/empresas.declaration"
+import { Empresa } from "../entity/Empresa"
 
-export class TaskController{
+export class EmpresaController{
 
-    constructor(private repository: DatabaseRepository<Task>){}
+    constructor(private repository: DatabaseRepository<Empresa>){}
 
     async create(
         req: Request, 
@@ -16,9 +16,9 @@ export class TaskController{
 
                 console.log('Body: ', body);
     
-                const task = await this.repository.create(body)
+                const empresa = await this.repository.create(body)
     
-                res.status(200).json(task);
+                res.status(200).json(empresa);
                 
             } catch (error) {
                 next(error);
@@ -33,8 +33,8 @@ export class TaskController{
         next: NextFunction
         ):Promise<void> {
             try {
-                const tasks = await this.repository.List();
-                res.status(200).json(tasks);
+                const empresas = await this.repository.List();
+                res.status(200).json(empresas);
 
             } catch (error) {
                 next(error);
@@ -47,11 +47,11 @@ export class TaskController{
         next: NextFunction
         ):Promise<void> {
             try {
-                const {taskId} = req.params;
+                const {idEmpresa} = req.params;
 
-                const task = await this.repository.get(taskId)
+                const empresa = await this.repository.get(parseInt(idEmpresa))
 
-                res.status(200).json(task);
+                res.status(200).json(empresa);
 
             } catch (error) {
                 next(error)
@@ -64,13 +64,13 @@ export class TaskController{
         next: NextFunction
         ):Promise<void> {
             try {
-                const {taskId} = req.params;
+                const {idEmpresa} = req.params;
 
                 const body = req.body;
 
-                const task = await this.repository.update(taskId, body);
+                const empresa = await this.repository.update(parseInt(idEmpresa), body);
 
-                res.status(200).json(task);
+                res.status(200).json(empresa);
 
             } catch (error) {
                 next(error)
@@ -83,11 +83,11 @@ export class TaskController{
         next: NextFunction
          ):Promise<void> {
            try {
-            const {taskId} = req.params;
+            const {idEmpresa} = req.params;
 
-            const task = await this.repository.remove(taskId);
+            const empresa = await this.repository.remove(parseInt(idEmpresa));
 
-            res.status(200).json(task);
+            res.status(200).json(empresa);
 
            } catch (error) {
             next(error)

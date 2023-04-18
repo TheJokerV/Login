@@ -26,7 +26,7 @@ export class PreguntasController{
         next: NextFunction
         ):Promise<void> {
             try {
-                const {idPreguntas: idPreguntas} = req.params;
+                const {idPreguntas} = req.params;
 
                 const preguntas = await this.repository.get(parseInt(idPreguntas, 10))
 
