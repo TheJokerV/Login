@@ -37,4 +37,19 @@ export class ActividadesController{
             }
         }
 
+    async getActivities(
+        req: Request,
+        res: Response,
+        next: NextFunction
+    ):Promise<void>{
+        try {
+            const actividades_preguntas = await this.repository.getActivities();
+
+            res.status(200).json(actividades_preguntas);
+
+        } catch (error) {
+            next(error)
+        }
+    }
+
     }

@@ -12,8 +12,12 @@ export class Calificacion {
   @Column("int", { primary: true, name: "idPregunta" })
   idPregunta!: number;
 
-  @Column("date", { primary: true, name: "fecha" })
-  fecha!: string;
+  @Column("timestamp", {
+    primary: true,
+    name: "fecha",
+    default: () => "CURRENT_TIMESTAMP",
+  })
+  fecha!: Date;
 
   @Column("int", { name: "calificacion" })
   calificacion!: number;

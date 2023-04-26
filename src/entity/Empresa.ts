@@ -8,12 +8,14 @@ import {
   ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn,
+  Unique,
 } from "typeorm";
 import { Calificacion } from "./Calificacion";
 import { Rol } from "./Rol";
 
 @Index("empRol_idx", ["rol"], {})
 @Entity("empresa", { schema: "mydb" })
+@Unique(['email'])
 export class Empresa {
   @PrimaryGeneratedColumn({ type: "int", name: "idEmpresa" })
   idEmpresa!: number;

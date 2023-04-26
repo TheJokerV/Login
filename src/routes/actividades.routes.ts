@@ -14,4 +14,6 @@ router.get("/actList",[checkAuth], controller.list.bind(controller));
 
 router.get("/actGetBy/:idActividades", [checkAuth], controller.get.bind(controller));
 
+router.get("/actGetActivities", [checkAuth], controller.getActivities.bind(controller))
+
 export default router;

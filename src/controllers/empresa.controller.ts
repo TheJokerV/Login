@@ -21,7 +21,7 @@ export class EmpresaController{
                 res.status(200).json(empresa);
                 
             } catch (error) {
-                next(error);
+                res.status(404).json({message: 'Email already exists.'})
             }
 
         }
