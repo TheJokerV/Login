@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon"
+    "dev": "nodemon",
+    "tsc": "tsc",
+    "build": "npm run tsc",
+    "start": "nodemon dist/index.js"
   },
   "keywords": [],
   "author": "",
