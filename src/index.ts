@@ -4,6 +4,8 @@ import express from "express";
 import database from "./config/database";
 import routes from "./routes/index";
 
+const PORT = process.env.PORT || 3030;
+
 const app = express()
 
 app.use(express.json())
@@ -15,6 +17,6 @@ database.initialize()
 
 app.use('/api', routes);
 
-app.listen(3030, () => {
-    console.log('App execute in port:3030')
+app.listen(PORT, () => {
+    console.log(`App execute in ${PORT}`)
 });
